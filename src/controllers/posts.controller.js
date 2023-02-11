@@ -1,3 +1,3 @@
-export const getAll = (req, res) => {
+export const readAll = (req, res) => {
     res.json("This is post route");
 };

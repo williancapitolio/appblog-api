@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getAll } from "../controllers/posts.controller.js";
+import { readAll } from "../controllers/posts.controller.js";
 
 const router = Router();
 
-router.get("/", getAll);
+router.get("/", readAll);
 
 export default router;
