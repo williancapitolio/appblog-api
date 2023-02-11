@@ -1,5 +1,5 @@
 import { db } from "../database/db.js"
-import bcrypt, { hashSync } from "bcrypt";
+import bcrypt from "bcrypt";
 
 export const register = (req, res) => {
     try {
