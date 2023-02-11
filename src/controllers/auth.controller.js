@@ -8,7 +8,6 @@ export const register = (req, res) => {
         db.query(q, [req.body.email, req.body.username], (err, data) => {
             if (err) return res.status(400).json(err);
             if (data.length) return res.status(409).json("User already exists!");
-            console.log(data)
             //HASH THE PASSWORD
             const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(req.body.password, salt);
