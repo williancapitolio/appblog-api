@@ -23,7 +23,8 @@ export const register = (req, res) => {
             });
         });
     } catch (err) {
-        res.status(500).json(err);
+        console.log(err);
+        res.status(500).json({ message: "Internal Server Error" });
     };
 };
 
@@ -42,10 +43,16 @@ export const login = (req, res) => {
             res.cookie("access_token", token, { httpOnly: true }).status(200).json(other);
         });
     } catch (err) {
-        res.status(500).json(err);
+        console.log(err);
+        res.status(500).json({ message: "Internal Server Error" });
     };
 };
 
 export const logout = (req, res) => {
-    res.clearCookie("access_token", { sameSite: "none", secure: true }).status(200).json("User has been logged out.");
+    try {
+        res.clearCookie("access_token", { sameSite: "none", secure: true }).status(200).json("User has been logged out.");
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Internal Server Error" });
+    };
 };
