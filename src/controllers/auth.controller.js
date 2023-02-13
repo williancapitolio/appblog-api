@@ -1,5 +1,8 @@
 import { db } from "../database/db.js"
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const register = (req, res) => {
     try {
@@ -34,6 +37,9 @@ export const login = (req, res) => {
             //CHECK PASSWORD
             const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password);
             if (!isPasswordCorrect) return res.status(400).json("Wrong username or password");
+            const token = jwt.sign({ id: data[0].id }, process.env.JWT_SECRET);
+            const { password, ...other } = data[0];
+            res.cookie("access_token", token, { httpOnly: true }).status(200).json(other);
         });
     } catch (err) {
         res.status(500).json(err);
