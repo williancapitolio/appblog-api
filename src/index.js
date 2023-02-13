@@ -4,9 +4,9 @@ dotenv.config();
 import express from "express";
 import cookieParser from "cookie-parser";
 
-import authRoute from "./routes/auth.route.js";
-import usersRoute from "./routes/users.route.js";
-import postsRoute from "./routes/posts.route.js";
+import authRoute from "./routes/authRoute.js";
+import usersRoute from "./routes/usersRoute.js";
+import postsRoute from "./routes/postsRoute.js";
 
 const port = process.env.PORT || 8800;
 const app = express();
