@@ -1,6 +1,7 @@
 import { db } from "../database/db.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+//import fs from "fs";
 dotenv.config();
 
 export const readAllPosts = (req, res) => {
@@ -65,6 +66,7 @@ export const deletePost = (req, res) => {
             const q = "DELETE FROM posts WHERE `id` = ? AND `uid` = ?";
             db.query(q, [postId, userInfo.id], (err, data) => {
                 if (err) return res.status(403).json("You can delete only your post!");
+                //fs.unlinkSync(postId.img);
                 return res.status(200).json("Post has been deleted!");
             });
         });
