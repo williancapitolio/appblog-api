@@ -8,7 +8,7 @@ import authRoute from "./routes/authRoute.js";
 import usersRoute from "./routes/usersRoute.js";
 import postsRoute from "./routes/postsRoute.js";
 
-import { upload, uploadImgMiddleware } from "./middlewares/UploadImgMiddleware.js";
+import { upload, uploadImgMiddleware } from "./config/multer.js";
 
 const port = process.env.PORT || 8800;
 const app = express();
