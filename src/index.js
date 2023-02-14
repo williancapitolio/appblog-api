@@ -5,7 +5,6 @@ import express from "express";
 import cookieParser from "cookie-parser";
 
 import authRoute from "./routes/authRoute.js";
-import usersRoute from "./routes/usersRoute.js";
 import postsRoute from "./routes/postsRoute.js";
 
 import { upload, uploadImgMiddleware } from "./config/multer.js";
@@ -17,7 +16,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.post("/api/upload", upload, uploadImgMiddleware);
 app.use("/api/auth", authRoute);
-app.use("/api/users", usersRoute);
 app.use("/api/posts", postsRoute);
 
 app.listen(port, () => console.log(`Connected on port ${port}`));
