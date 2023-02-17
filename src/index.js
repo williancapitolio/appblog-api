@@ -12,6 +12,7 @@ import { upload, uploadImgMiddleware } from "./config/multer.js";
 const port = process.env.PORT || 8800;
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.post("/api/upload", upload, uploadImgMiddleware);
