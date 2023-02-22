@@ -40,7 +40,7 @@ export const login = (req, res) => {
             if (!isPasswordCorrect) return res.status(400).json("Usuário ou senha incorreto!");
             const token = jwt.sign({ id: data[0].id }, process.env.JWT_SECRET);
             const { password, ...other } = data[0];
-            res.cookie("access_token", token, { httpOnly: true }).status(200).json(other);
+            res.cookie("access_token", token, { httpOnly: true, }).status(200).json(other);
         });
     } catch (err) {
         console.log(err);
